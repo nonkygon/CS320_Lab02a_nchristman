@@ -23,7 +23,7 @@
 				$("#addNumbersButton").click(function() {
 					$.ajax({
 						type: 'POST',
-						url: '/lab12/ajax/addNumbers',
+						url: '/lab02a_nchristman/ajax/addNumbers',
 						data: { first: $("#firstNumberElt").val(), second: $("#secondNumberElt").val() },
 						success:
 							function(data, textStatus, jqXHR) {
@@ -49,6 +49,10 @@
 			<tr>
 				<td class="label">Second number:</td>
 				<td><input id="secondNumberElt" type="text" size="12" /></td>
+			</tr>
+			<tr>
+				<td class="label">Third number:</td>
+				<td><input id="thirdNumberElt" type="text" size="12" /></td>
 			</tr>
 			<tr>
 				<td class="label">Result:</td>
