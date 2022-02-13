@@ -6,8 +6,9 @@
          xmlns="http://java.sun.com/xml/ns/javaee">
 
   <!-- Servlets --><servlet>
+	<servlet-name>MultiplyNumbersServlet</servlet-name>
 	<servlet-class>edu.ycp.cs320.lab02a_nchristman.servlet.MultiplyNumbersServlet</servlet-class>
-	<servlet-name>MultiplyNumbersServlet</servlet-name></servlet>
+	</servlet>
 	<servlet>
     <servlet-name>IndexServlet</servlet-name>
     <servlet-class>edu.ycp.cs320.lab02a_nchristman.servlet.IndexServlet</servlet-class>

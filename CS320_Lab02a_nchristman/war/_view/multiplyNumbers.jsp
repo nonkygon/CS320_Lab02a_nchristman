@@ -25,11 +25,11 @@
 			<table>
 				<tr>
 					<td class="label">First number:</td>
-					<td><input type="text" name="first" size="12" value="${first}" /></td>
+					<td><input type="text" name="first" size="12" value="${game.first}" /></td>
 				</tr>
 				<tr>
 					<td class="label">Second number:</td>
-					<td><input type="text" name="second" size="12" value="${second}" /></td>
+					<td><input type="text" name="second" size="12" value="${game.second}" /></td>
 				</tr>
 				<tr>
 					<td class="label">Result:</td>
