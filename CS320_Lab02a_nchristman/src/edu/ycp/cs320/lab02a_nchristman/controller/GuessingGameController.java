@@ -1,6 +1,6 @@
-package edu.ycp.cs320.lab02.controller;
+package edu.ycp.cs320.lab02a_nchristman.controller;
 
-import edu.ycp.cs320.lab02.model.GuessingGame;
+import edu.ycp.cs320.lab02a_nchristman.model.GuessingGame;
 
 /**
  * Controller for the guessing game.
