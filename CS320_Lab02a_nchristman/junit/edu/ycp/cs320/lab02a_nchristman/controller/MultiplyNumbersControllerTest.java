@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import edu.ycp.cs320.lab02a_nchristman.controller.NumbersController;
 
-public class AddNumbersControllerTest {
+public class MultiplyNumbersControllerTest {
 	private NumbersController controller;
 	
 	@Before
@@ -16,12 +16,11 @@ public class AddNumbersControllerTest {
 	}
 	
 	@Test
-	public void testAddValidNumbers() {
-		Double one = 1.0;
-		Double two = 2.0;
-		Double three = 3.0;
-		Double result = controller.add(one, two, three);
-		assertEquals((Double)6.0, result);
+	public void testMultiplyValidNumbers() {
+		Double one = 5.0;
+		Double two = 6.0;
+		Double result = controller.multiply(one, two);
+		assertEquals((Double)30.0, result);
 	}
 	
 }
