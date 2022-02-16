@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import edu.ycp.cs320.lab02a_nchristman.controller.NumbersController;
+import edu.ycp.cs320.lab02a_nchristman.model.Numbers;
 
 public class AddNumbersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -35,12 +36,16 @@ public class AddNumbersServlet extends HttpServlet {
 		// result of calculation goes here
 		Double result = null;
 		
+		Numbers model = new Numbers();
+		
 		// decode POSTed form parameters and dispatch to controller
 		try {
 			Double first = getDoubleFromParameter(req.getParameter("first"));
 			Double second = getDoubleFromParameter(req.getParameter("second"));
 			Double third = getDoubleFromParameter(req.getParameter("third"));
-
+			NumbersController controller = new NumbersController();
+			controller.setModel(model);
+			controller.popValues(first, second, third);
 			// check for errors in the form data before using is in a calculation
 			if (first == null || second == null || third == null) {
 				errorMessage = "Please specify three numbers";
@@ -50,8 +55,7 @@ public class AddNumbersServlet extends HttpServlet {
 			// the view does not alter data, only controller methods should be used for that
 			// thus, always call a controller method to operate on the data
 			else {
-				NumbersController controller = new NumbersController();
-				result = controller.add(first, second, third);
+				result = controller.add();
 			}
 		} catch (NumberFormatException e) {
 			errorMessage = "Invalid double";
@@ -62,6 +66,7 @@ public class AddNumbersServlet extends HttpServlet {
 		// values that were originally assigned to the request attributes, also named "first" and "second"
 		// they don't have to be named the same, but in this case, since we are passing them back
 		// and forth, it's a good idea
+		req.setAttribute("game", model);
 		req.setAttribute("first", req.getParameter("first"));
 		req.setAttribute("second", req.getParameter("second"));
 		req.setAttribute("third", req.getParameter("third"));

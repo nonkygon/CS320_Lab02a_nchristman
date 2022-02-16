@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import edu.ycp.cs320.lab02a_nchristman.controller.NumbersController;
+import edu.ycp.cs320.lab02a_nchristman.model.Numbers;
 
 public class MultiplyNumbersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -35,11 +36,16 @@ public class MultiplyNumbersServlet extends HttpServlet {
 		// result of calculation goes here
 		Double result = null;
 		
+		Numbers model = new Numbers();
+		req.setAttribute("game", model);
+		
 		// decode POSTed form parameters and dispatch to controller
 		try {
 			Double first = getDoubleFromParameter(req.getParameter("first"));
 			Double second = getDoubleFromParameter(req.getParameter("second"));
-
+			NumbersController controller = new NumbersController();
+			controller.setModel(model);
+			controller.popValues(first, second, 0.0);
 			// check for errors in the form data before using is in a calculation
 			if (first == null || second == null) {
 				errorMessage = "Please specify two numbers";
@@ -49,8 +55,7 @@ public class MultiplyNumbersServlet extends HttpServlet {
 			// the view does not alter data, only controller methods should be used for that
 			// thus, always call a controller method to operate on the data
 			else {
-				NumbersController controller = new NumbersController();
-				result = controller.multiply(first, second);
+				result = controller.multiply();
 			}
 		} catch (NumberFormatException e) {
 			errorMessage = "Invalid double";
